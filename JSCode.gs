@@ -49,6 +49,7 @@ function analyseEmails()
     var response = callGemini(promptContext+emailBody);
   
    let threadIdToReply =threads[i].getId();
+   threads[i].markRead();
    var header = "Subject of Email being analysed: " + message.getSubject() + "\nSent Date of Email:"+ message.getDate() + "\nSender of Email: "+message.getFrom()+"\n\n";
    
    GmailApp.sendEmail(myEmail,message.getSubject(),header+response,{threadId: threadIdToReply});
