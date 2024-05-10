@@ -32,9 +32,12 @@ function analyseEmails()
 {
 
   threads = retrieveEmails();
+  Logger.log("Number of Emails processed: " + threads.length);
+  //if there are no target emails retrieved, end function
+  if(threads.length==0){ return;}
+  
   promptContext = getMyContext();
   myEmail = Session.getActiveUser().getEmail();
-  Logger.log("Number of Emails processed: " + threads.length);
   Logger.log("Analysis will be sent to: "+myEmail);
 
   // Process each target email
