@@ -44,7 +44,14 @@ function analyseEmails()
   for (var i = 0; i < threads.length; i++) {
 
     var messages = threads[i].getMessages();
-    var message = messages[0]; // Assuming one message per thread
+    if(messages.length>0)
+    {
+      message = messages[messages.length - 1];
+    }
+    else
+    {
+      message = messages[0];
+    }
     emailBody = message.getPlainBody();
     var response = callGemini(promptContext+emailBody);
   
